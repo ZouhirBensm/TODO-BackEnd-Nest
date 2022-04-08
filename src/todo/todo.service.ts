@@ -23,7 +23,7 @@ export class TodoService {
     //     return await this.todoRepository.update(todo.id, todo);
     // }
 
-    // async delete(id): Promise<DeleteResult> {
-    //     return await this.todoRepository.delete(id);
-    // }
+    async delete(id): Promise<DeleteResult> {
+        return await this.todoRepository.delete(id);
+    }
 }
