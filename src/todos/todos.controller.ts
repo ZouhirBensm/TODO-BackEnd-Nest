@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { Todo } from '../entities/todo.entity';
 import { TodoService } from './../todo/todo.service';
 
@@ -9,8 +9,10 @@ export class TodosController {
         
     }
     @Get()
-    read(): Promise<Todo[]> {
-        return this.todoService.readAll();
+    read(@Query() query: string): Promise<Todo[]> {
+        console.log(Object.values(query)[0])
+        const search = Object.values(query)[0]
+        return this.todoService.readAll(search);
     }
 
     @Post('create')

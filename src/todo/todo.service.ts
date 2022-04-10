@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository, UpdateResult, DeleteResult } from 'typeorm';
+import { Repository, UpdateResult, DeleteResult, Like } from 'typeorm';
 import { Todo } from '../entities/todo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -14,8 +14,15 @@ export class TodoService {
         return await this.todoRepository.save(todo);
     }
 
-    async  readAll(): Promise<Todo[]> {
-        return await this.todoRepository.find();
+    async  readAll(search: string): Promise<Todo[]> {
+        // console.log(term, Object.keys(term))
+        if (search){
+            // Query 
+            return await this.todoRepository.find({ where: { title: Like(`%${search}%`) } });
+
+        } else {
+            return await this.todoRepository.find();
+        }
     }
 
     // async update(todo: Todo): Promise<UpdateResult> {
