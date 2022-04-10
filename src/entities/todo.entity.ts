@@ -5,9 +5,11 @@ export class Todo {
     id: number;
     
     @Column()
-    title: string;
+    title!: string;
 
-    @Column()
+    // @Column()
+    // date_dn: Date;
+    @Column({ type: "datetime", default: null })
     date_dn: Date;
 
     @Column()
@@ -15,6 +17,7 @@ export class Todo {
 
     @Column()
     status: number;
+    
 }
 
 // Status: 1: Null, 2: Requires Attention 3: Priority 4: Soon Finished 5: Done
