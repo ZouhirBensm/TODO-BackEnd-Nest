@@ -15,6 +15,11 @@ export class TodosController {
         return this.todoService.readAll(search);
     }
 
+    @Get(':id')
+    readTodo(@Param('id') id): Promise<any> {
+        return this.todoService.readTodo(id);
+    }
+
     @Post('create')
     async create(@Body() todo: Todo): Promise<any> {
         return this.todoService.create(todo);

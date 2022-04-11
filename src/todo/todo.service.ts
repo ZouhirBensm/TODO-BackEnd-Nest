@@ -25,6 +25,11 @@ export class TodoService {
         }
     }
 
+    async  readTodo(id): Promise<Todo[]> {
+        // console.log(term, Object.keys(term))
+        return await this.todoRepository.find({ where: { id: id } });
+    }
+
     // async update(todo: Todo): Promise<UpdateResult> {
 
     //     return await this.todoRepository.update(todo.id, todo);
