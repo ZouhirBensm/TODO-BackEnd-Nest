@@ -30,4 +30,10 @@ export class TodosController {
     async delete(@Param('id') id): Promise<any> {
         return this.todoService.delete(id);
     }
+
+    @Put(':id/done')
+    async changeToDone(@Param('id') id): Promise<any> {
+        // return this.todoService.changeToDone(id);
+        console.log("In the change to done controller: id: ", id)
+    }
 }
