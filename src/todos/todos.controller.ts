@@ -32,8 +32,11 @@ export class TodosController {
     }
 
     @Put(':id/done')
-    async changeToDone(@Param('id') id): Promise<any> {
+    async changeToDone(@Param('id') id, @Body() todo: Todo): Promise<any> {
+        id = Number(id)
+        todo.status = 5;
+        console.log("In the change to done controller: todo: ", todo, typeof todo)
+        return this.todoService.changeToDone(todo);
         // return this.todoService.changeToDone(id);
-        console.log("In the change to done controller: id: ", id)
     }
 }

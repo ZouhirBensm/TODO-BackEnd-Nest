@@ -30,6 +30,10 @@ export class TodoService {
     //     return await this.todoRepository.update(todo.id, todo);
     // }
 
+    async changeToDone(todo: Todo): Promise<UpdateResult> {
+        return await this.todoRepository.update(todo.id, todo);
+    }
+
     async delete(id): Promise<DeleteResult> {
         return await this.todoRepository.delete(id);
     }
