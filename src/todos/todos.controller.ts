@@ -44,4 +44,15 @@ export class TodosController {
         return this.todoService.changeToDone(todo);
         // return this.todoService.changeToDone(id);
     }
+    
+    @Put(':id/changestatus')
+    async changeStatus(@Param('id') id, @Body() body: any): Promise<any> {
+        id = Number(id)
+        console.log(body)
+        body.todo.status = body.status
+        // todo.status = 5;
+        console.log("In the change to done controller: todo: ", body.todo, typeof body.todo)
+        return this.todoService.changeStatus(body.todo);
+        // return this.todoService.changeToDone(id);
+    }
 }
