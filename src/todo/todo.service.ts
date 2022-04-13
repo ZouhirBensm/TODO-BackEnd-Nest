@@ -39,7 +39,7 @@ export class TodoService {
         return await this.todoRepository.update(todo.id, todo);
     }
 
-    async changeStatus(todo: Todo): Promise<UpdateResult> {
+    async changeStatusTitle(todo: Todo): Promise<UpdateResult> {
         return await this.todoRepository.update(todo.id, todo);
     }
 
