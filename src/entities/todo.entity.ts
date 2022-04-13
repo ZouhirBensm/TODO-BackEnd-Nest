@@ -15,6 +15,9 @@ export class Todo {
     @Column()
     date_cr: Date;
 
+    @Column({ type: "datetime", default: null })
+    date_dn_clicked: Date;
+
     @Column()
     status: number;
     
